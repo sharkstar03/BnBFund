@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNB Fund</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body class="bg-black text-white">
+    <div id="main-container" class="container mx-auto p-0 max-w-screen-lg bg-black pt-16 md:pt-24">
+        <!-- Banner -->
+        <div id="banner" class="w-full flex justify-between items-center bg-black mb-10 p-2 md:p-4 fixed top-0 left-0 z-50">
+            <div class="flex items-center sm:ml-0 md:ml-0 lg:ml-8 xl:ml-12">
+                <a href="index.html"><img src="img/bills.png" alt="BNB Fund Logo" class="h-8 w-8 mr-2 md:h-14 md:w-16"></a>
+                <h1 class="text-lg font-bold md:text-2xl">BNB Fund</h1>
+            </div>
+            <div class="flex items-center sm:mr-0 md:mr-0 lg:mr-8 xl:mr-12">
+                <!-- <span class="bnb-price mr-2 text-xs md:mr-4 md:text-base">1 POL(MATIC) =</span> -->
+                <span class="mr-2 text-xs md:mr-4 md:text-base">1 POL(MATIC) =</span>
+                <div id="connectButtonContainer" class="bg-yellow-500 text-black px-2 py-1 rounded-xl text-xs md:px-4 md:py-2 md:text-base" onclick="openModal()">Connect wallet</div>
+                
+            </div>
+        </div>
+
+        <!-- Contenido principal con margen superior adicional en m&oacute;viles -->
+        <div id="main-content" class="mt-12 md:mt-0">
+            <!-- Aqu&iacute; el contenido principal, incluyendo la tarjeta "Welcome to BNBFund" -->
+        </div>
+        
+        <!-- Rest of the content -->
+        <div id="mainContent" class="bg-blue-500 p-0 rounded-none sm:rounded-none md:rounded-3xl mb-8 flex flex-col md:flex-row items-stretch w-full sm:w-full md:w-auto sm:px-0">
+            <div class="relative flex-1 p-4 pl-6 flex flex-col items-start">
+                <h2 class="text-lg font-bold mb-2 md:text-3xl text-left">Welcome to BNBFund</h2>
+                
+                <p class="mb-2 text-xs md:text-base">Connect your wallet to get started. First time? Watch a tutorial to learn more.</p>
+                <div class="md:hidden w-full flex justify-center my-4">
+                    <img src="img/mony.png" alt="Coins, bills, and smartphone" class="w-full h-auto md:w-full">
+                </div>
+                <div class="flex flex-col items-center w-full space-y-2 md:space-y-0 md:flex-row md:mt-4 mt-0">
+                    <button id="joinProfileButton" class="bg-black text-white px-4 py-2 rounded-xl w-full md:w-auto md:mr-4" onclick="openModal()">Connect now</button>
+                    <button class="bg-gray-200 text-black px-4 py-2 rounded-xl w-full md:w-auto">Watch tutorial</button>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center items-stretch relative overflow-hidden h-64 md:h-auto md:block hidden">
+                <div class="relative w-full h-full">
+                    <img src="img/mony.png" alt="Coins, bills, and smartphone" class="absolute top-0 left-0 w-full h-auto object-cover md:opacity-100 opacity-30" style="transform: scale(1.2);">
+                </div>
+            </div>
+        </div>   
+             
+        <div class="bg-transparent p-6 mb-2">
+            <h2 class="text-2xl font-bold mb-4">Previewing an account</h2>
+            <p class="mb-4">Search for any member account within BNBFund in preview mode. <br> Enter the ID or POL address to preview or click Demo to view a random account.</p>
+        </div>
+
+        <!-- Formulario de entrada -->
+        <div class="flex flex-wrap md:flex-nowrap w-full mb-4" style="gap: 10px;">
+            <div class="bg-blue-500 p-4 rounded-3xl w-full md:w-3/4 mb-4 md:mb-0">
+                <p class="mb-4">Ingresa ID o direccion de wallet</p>
+                <div class="flex flex-col md:flex-row w-full">
+                    <input type="text" id="userInput" placeholder="Ejemplo: 82314" class="bg-gray-700 text-white px-4 py-2 mb-2 flex-grow rounded-xl">
+                    <button id="previewButton" class="bg-blue-400 text-white px-4 py-2 mb-2 md:ml-2 rounded-xl">Preview</button>
+                </div>
+            </div>
+        
+            <div class="bg-gray-700 p-4 rounded-3xl w-full md:w-1/4 ml-auto">
+                <p class="mb-2">No conoces ningun ID?</p>
+                <button id="checkDemoButton" class="bg-gray-600 text-white px-4 py-2 rounded-xl">Check demo</button>
+            </div>
+        </div>
+                
+        <div class="flex flex-wrap">
+            <div class="w-full md:w-1/2 mb-4 md:mb-0 md:pr-2">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-md font-bold mb-4">Recent Activity BNBFund</h2>
+                    <div id="recentActivity" class="block sm:block md:block lg:block xl:block 2xl:block"></div>
+                    
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg mt-4"> <h2 class="text-md font-bold mb-4">Additional Deposits</h2>
+                    <div id="additionalDeposits" class="block sm:block md:block lg:block xl:block 2xl:block"></div>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-1/2 md:pl-2">
+                <div class="mb-4 bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-md font-bold mb-2">Total members</h2>
+                    <p id="totalMembers" class="text-sm">0</p>
+                </div>
+                <div class="mb-4 bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-md font-bold mb-2">Total Smart Contract Funds</h2>
+                    <p id="totalContractFunds" class="text-sm">0</p>
+                </div>
+                <div class="mb-4 bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-md font-bold mb-2">Total Distribuction</h2>
+                    <div id="totalDistributed">0</div>
+                </div>
+                <div class="mb-4 bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-md font-bold mb-2">Total Polygon Distribuidos</h2>
+                    <p id="bnbFundtotalDepositedsValue" class="text-sm">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- imagen -->
+
+        <!-- Sección con imagen y fondo degradado -->
+
+        <div id="" class="relative mt-0 mb-4 overflow-hidden">
+            <div class="absolute inset-0 blur-background"></div>
+            <img src="img/smart.png" alt="" class="relative w-full block">
+        </div>
+        
+
+        <!-- Nueva Seccion de items e Informacion -->
+        <div id="item-section" class="bg-transparent p-2 mb-2">
+            <h2 class="text-4xl font-bold mb-8 text-center">Tecnolog&iacute;a de contratos inteligentes</h2>
+            <P class="text-2Ml mb-8 text-center">El marketing descentralizado est&aacute; impulsado por la tecnolog&iacute;a revolucionaria
+                de contratos inteligentes. El c&oacute;digo de contrato inteligente de BNBFun est&aacute; completamente abierto. 
+                Puede estar seguro de su seguridad y rendimiento a largo plazo.</P>
+                <div class="flex flex-wrap md:flex-nowrap w-full mb-4" style="gap: 10px;">
+                    
+                    <!-- Tarjeta de Información -->
+                    <div id="item-info" class="bg-gray-800 p-6 rounded-3xl shadow-lg w-full md:w-2/4">
+                        <!-- Imagen centrada -->
+                        <div id="img-content" class="flex justify-center my-4">
+                            <img src="img/autonomia.png" alt="Imagen Centrala" class="w-30 h-32">
+                        </div>
+                        <h2 id="item-info-title" class="text-md font-bold mb-4 text-center">Autonomia</h2>
+                        <div id="item-info-content" class="text-center">
+                        <p>El ecosistema de BNBFund se basa en la tecnología de contratos inteligentes y blockchain, que son completamente autónomos y excluyen la influencia del factor humano.</p>
+                        
+                        </div>
+                    </div>
+
+                    <div class="bg-black-800 p-4 rounded-3xl w-full md:w-2/4 mr-auto mb-10">
+                        <ul id="item-list" class="space-y-2 flex flex-col items-center">
+                        <li class="bg-transparent p-2 rounded-xl cursor-pointer mx-auto inline-block hover:bg-gray-600" onmouseover="showItemTitle('Autonomia')">Autonomia</li>
+                        <li class="bg-transparent p-2 rounded-xl cursor-pointer mx-auto inline-block hover:bg-gray-600" onmouseover="showItemTitle('Condiciones inmutables')">Condiciones inmutables</li>
+                        <li class="bg-transparent p-2 rounded-xl cursor-pointer mx-auto inline-block hover:bg-gray-600" onmouseover="showItemTitle('Transparencia')">Transparencia</li>
+                        <li class="bg-transparent p-2 rounded-xl cursor-pointer mx-auto inline-block hover:bg-gray-600" onmouseover="showItemTitle('Automatizacion completa')">Automatizacion completa</li>
+                        <li class="bg-transparent p-2 rounded-xl cursor-pointer mx-auto inline-block hover:bg-gray-600" onmouseover="showItemTitle('Descentralizacion')">Descentralizacion</li>
+                        <li class="bg-transparent p-2 rounded-xl cursor-pointer mx-auto inline-block hover:bg-gray-600" onmouseover="showItemTitle('100% en linea')">100% en linea</li>
+                        </ul>
+                    </div>
+                </div>
+        </div>       
+
+        <!-- Nueva Secci&oacute;n de Preguntas Frecuentes -->
+        <div id="faq-section" class="bg-transparent p-2 mt-8">
+            <h2 class="text-4xl font-bold mb-4 text-center">Preguntas Frecuentes</h2>
+            <div class="flex flex-wrap md:flex-nowrap w-full mb-4" style="gap: 10px;">
+                <!-- Lista de Preguntas -->
+                <div class="bg-black-700 p-4 rounded-3xl w-full">
+                    <ul id="faq-list" class="space-y-2">
+                        <li class="bg-black-800 p-4 rounded-xl cursor-pointer" onclick="toggleAnswer('faq1')">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl">Por qu&eacute; BNBFund es la mejor alternativa al trading?</span>
+                                <i id="faq1-icon" class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="faq1-answer" class="hidden mt-2">
+                                <p>BNBFund ofrece un modelo estrat&eacute;gico y sostenible de generaci&oacute;n de ingresos sin la necesidad de 
+                                    realizar operaciones de trading, analizar gr&aacute;ficos o asumir los riesgos de la volatilidad del mercado. 
+                                    En lugar de depender de la especulaci&oacute;n, BNBFund conecta personas en una red financiera descentralizada, 
+                                    donde las oportunidades de crecimiento est&aacute;n basadas en la colaboraci&oacute;n y la estrategia, 
+                                    sin la intervenci&oacute;n de bancos ni intermediarios.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="border-t border-white my-2"></li>
+                        <li class="bg-black-800 p-4 rounded-xl cursor-pointer" onclick="toggleAnswer('faq2')">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl">Es seguro invertir en BNB Fund?</span>
+                                <i id="faq2-icon" class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="faq2-answer" class="hidden mt-2">
+                                <p>S&iacute;, BNBFund se basa en un modelo transparente y sin intermediarios, eliminando los riesgos de manipulaci&oacute;n financiera. 
+                                    Al operar bajo principios de autogesti&oacute;n y participaci&oacute;n comunitaria, los fondos y las oportunidades de crecimiento 
+                                    dependen exclusivamente de la din&aacute;mica interna de la red, sin estar expuestos a instituciones centralizadas o 
+                                    entidades externas.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="border-t border-white my-2"></li>
+                        <li class="bg-black-800 p-4 rounded-xl cursor-pointer" onclick="toggleAnswer('faq3')">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl">Cu&aacute;nto cuesta participar en BNBFund?</span>
+                                <i id="faq3-icon" class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="faq3-answer" class="hidden mt-2">
+                                <p>Para unirte a BNBFund y empezar a generar ingresos, debes realizar un dep&oacute;sito m&iacute;nimo que te permita activar tu 
+                                    participaci&oacute;n en la red. No existen tarifas ocultas ni costos administrativos adicionales, ya que el sistema 
+                                    est&aacute; diseñado para ser accesible y sostenible para todos los participantes.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="border-t border-white my-2"></li>
+                        <li class="bg-black-800 p-4 rounded-xl cursor-pointer" onclick="toggleAnswer('faq4')">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl">Qu&eacute; necesito para comenzar en BNBFund.io?</span>
+                                <i id="faq4-icon" class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="faq4-answer" class="hidden mt-2">
+                                <p>Solo necesitas:
+
+                                    Acceder a BNBFund.io desde cualquier dispositivo.
+                                    Realizar tu primer aporte para activar tu participaci&oacute;n en la red.
+                                    Formar parte de la comunidad, compartir la oportunidad y empezar a construir tu crecimiento
+                                    financiero dentro del sistema.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="border-t border-white my-2"></li>
+                        <li class="bg-black-800 p-4 rounded-xl cursor-pointer" onclick="toggleAnswer('faq5')">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl">C&oacute;mo empiezo?</span>
+                                <i id="faq5-icon" class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="faq5-answer" class="hidden mt-2">
+                                <p>Reg&iacute;strate en BNBFund.io y accede a la plataforma. Haz tu primer aporte para activar tu cuenta. 
+                                    Comparte la oportunidad con tu red para maximizar tus beneficios.
+                                    Recibe recompensas peri&oacute;dicas y crece dentro de la comunidad.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="border-t border-white my-2"></li>
+                        <li class="bg-black-800 p-4 rounded-xl cursor-pointer" onclick="toggleAnswer('faq6')">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl">De d&oacute;nde vendr&aacute;n mis ganancias?</span>
+                                <i id="faq6-icon" class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="faq6-answer" class="hidden mt-2">
+                                <p>Tus ganancias provienen de la estructura de red y participaci&oacute;n dentro de BNBFund. A medida que crece 
+                                    la comunidad y m&aacute;s personas se suman al sistema, se generan nuevas oportunidades de distribuci&oacute;n 
+                                    de fondos, permitiendo que los participantes activos obtengan beneficios constantes. Gracias a su 
+                                    enfoque "Bankless" (sin bancos), la comunidad es la que impulsa el crecimiento, sin depender de 
+                                    instituciones financieras tradicionales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="border-t border-white my-2"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div id="main-container" class="container mx-auto p-0 max-w-screen-lg bg-black pt-0 md:pt-0">     -->
+
+                <!-- Secci&oacute;n de Canales Oficiales -->
+        <div class="bg-transparent p-0 mb-0">
+            <div class="flex items-center justify-center h-full">
+                <h2 class="text-4xl font-bold mb-8 text-center">Redes Sociales</h2>
+            </div>
+            
+            <div class="flex justify-center space-x-4">
+                <div class="flex justify-center space-x-4">
+                    <!-- Link de la imagen "img/whats-logo.png" -->
+                    <a href="https://chat.whatsapp.com/H6CJdsDw4lo3vk8UhkNIPg" target="_blank" class="text-white">
+                      <img src="img/whats-logo.png" alt="WhatsApp Logo" class="w-20 h-20">
+                    </a>
+                    <!-- Link de la imagen "img/insta-logo.png" -->
+                    <a href="https://www.instagram.com/bnbfund.io/" target="_blank" class="text-white">
+                      <img src="img/insta-logo.png" alt="Instagram Logo" class="w-20 h-20">
+                    </a>
+                    <!-- Link de la imagen "img/you-logo.png" -->
+                    <a href="https://www.youtube.com/@BNBFund" target="_blank" class="text-white">
+                      <img src="img/you-logo.png" alt="YouTube Logo" class="w-20 h-20">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="item-section" class="bg-transparent p-2 mb-2">
+            <h2 class="text-xl font-bold mb-4 text-center">BNBFund es m&aacute;s que una plataforma, es una revoluci&oacute;n financiera sin bancos ni 
+               intermediarios. Unete y comienza a construir tu futuro financiero hoy mismo!
+           </h2>     
+       </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-8"> <!-- Aumentado padding vertical (py-8) para hacer el footer más grueso -->
+        <div class="flex justify-center items-center gap-2"> <!-- Usando flexbox con un gap mínimo -->
+            <div class="text-left text-xs">
+                <p class="m-0 p-2">&copy; 2025 BNBFund. Todos los derechos reservados.</p>
+            </div>
+            <!-- <div class="text-center">
+                <p class="m-0 p-2">Contacto: contacto@bnbfund.com</p>
+            </div> -->
+            <!-- Sección para políticas y disclaimer -->
+            <div class="text-center text-xs">
+                <p class="m-0 p-2">
+                    Disclaimer 
+                    <a href="/disclaimer/politicas.pdf" target="_blank">Politicas</a> | 
+                    <a href="/disclaimer/declaracion.pdf" target="_blank">Aviso Legal</a> | 
+                    <a href="/disclaimer/terminos-y-condiciones.pdf" target="_blank">Terminos y Condiciones</a>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 hidden bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-gray-800 p-8 rounded-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-4">Connect Wallet</h2>
+            <div class="flex items-center bg-gray-700 p-4 rounded-lg mb-2" onclick="connectWallet('metamask')">
+                <img src="img/metamask.png" alt="MetaMask" class="h-6 w-6 mr-4">
+                <span>MetaMask</span>
+            </div>
+            <div class="flex items-center bg-gray-700 p-4 rounded-lg mb-2" onclick="connectWallet('trust')">
+                <img src="img/trust.png" alt="Trust Wallet" class="h-6 w-6 mr-4">
+                <span>Trust Wallet</span>
+            </div>
+            <div class="flex items-center bg-gray-700 p-4 rounded-lg mb-2" onclick="connectWallet('tokenpocket')">
+                <img src="img/tokenpocket.png" alt="TokenPocket" class="h-6 w-6 mr-4">
+                <span>TokenPocket</span>
+            </div>
+            <div class="flex items-center bg-gray-700 p-4 rounded-lg mb-4" onclick="connectWallet('walletconnect')">
+                <img src="img/connect.png" alt="WalletConnect" class="h-6 w-6 mr-4">
+                <span>WalletConnect</span>
+            </div>
+            <div class="text-center text-gray-400">
+                <a href="#" class="underline">Contact Support</a>
+            </div>
+            <button class="mt-4 bg-yellow-500 text-black px-4 py-2 rounded-lg w-full" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="script/modal-connect.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <div id="contractInfo"></div>
+    <script src="script/web3.js"></script>
+    <script src="script/web3-utils.js"></script>
+    <script src="script/contract.js"></script>
+    <script src="script/wallets.js"></script>
+    <script src="script/checkid.js"></script>
+    <script src="script/informacion.js"></script>
+
+    
+    
+</body>
+</html>

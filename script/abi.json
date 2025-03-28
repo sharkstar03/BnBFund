@@ -1,0 +1,849 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "referidorID",
+				"type": "uint256"
+			}
+		],
+		"name": "depositarConReferido",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "participante",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "monto",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "referidorID",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "Deposito",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "montoTotal",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "Distribucion",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "distribuirRecompensas",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "participante",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "NuevoParticipante",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "participante",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "monto",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "RecompensaRecibida",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "DEPOSITO_MINIMO",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "direccionesParticipantes",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "estaRegistrado",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "INTERVALO_DISTRIBUCION",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "LIMITE_DISTRIBUCIONES",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "montoTotalDepositado",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "montoTotalDistribuido",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "montoUltimaDistribucion",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "nextParticipantId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "obtenerBalanceContrato",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "participante",
+				"type": "address"
+			}
+		],
+		"name": "obtenerDistribucionesRecibidas",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "participante",
+				"type": "address"
+			}
+		],
+		"name": "obtenerEstadoParticipante",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "estaActivo",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tiempoUltimoDeposito",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address[]",
+				"name": "referidos",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "distribucionesRecibidas",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "receteos",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "nuevoDeposito",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "obtenerInfoCompletaParticipantes",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "direccion",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "estaActivo",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tiempoUltimoDeposito",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address[]",
+						"name": "referidos",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "distribucionesRecibidas",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "receteos",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "nuevoDeposito",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "montoDepositado",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "referidorID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "ultimaDistribucionRecibida",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "montoTotalRecibido",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct DistribucionBNB.Participante[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "participante",
+				"type": "address"
+			}
+		],
+		"name": "obtenerMontoDepositado",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "obtenerMontoTotalDepositado",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "obtenerMontoTotalDistribuido",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "participante",
+				"type": "address"
+			}
+		],
+		"name": "obtenerNumeroDeReferidos",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "participanteAddress",
+				"type": "address"
+			}
+		],
+		"name": "obtenerParticipantePorDireccion",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "direccion",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "estaActivo",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tiempoUltimoDeposito",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address[]",
+						"name": "referidos",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "distribucionesRecibidas",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "receteos",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "nuevoDeposito",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "montoDepositado",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "referidorID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "ultimaDistribucionRecibida",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "montoTotalRecibido",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct DistribucionBNB.Participante",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "participanteID",
+				"type": "uint256"
+			}
+		],
+		"name": "obtenerParticipantePorId",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "direccion",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "estaActivo",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tiempoUltimoDeposito",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address[]",
+						"name": "referidos",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "distribucionesRecibidas",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "receteos",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "nuevoDeposito",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "montoDepositado",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "referidorID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "ultimaDistribucionRecibida",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "montoTotalRecibido",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct DistribucionBNB.Participante",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "participante",
+				"type": "address"
+			}
+		],
+		"name": "obtenerReceteos",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "obtenertotalDistribuciones",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "obtenerUltimaDistribucion",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "participantes",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "direccion",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "estaActivo",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tiempoUltimoDeposito",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "distribucionesRecibidas",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "receteos",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "nuevoDeposito",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "montoDepositado",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "referidorID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ultimaDistribucionRecibida",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "montoTotalRecibido",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "participantesPorId",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "PORCENTAJE_DISTRIBUCION",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "primeraDistribucionRealizada",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "propietario",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tiempoUltimaDistribucion",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalDistribuciones",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalParticipantes",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

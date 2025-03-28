@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referidos - BNB Fund</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="css/alert.css">
+</head>
+<body class="bg-black text-white">
+    <div class="container mx-auto p-2 max-w-screen-xl bg-black rounded-3xl shadow-xl">
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-4 rounded-2xl mb-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html">
+                        <img src="img/bills.png" alt="BNB Fund Logo" class="h-12 w-12 mr-4">
+                    </a>
+                    <h1 class="text-3xl font-extrabold">BNB Fund</h1>
+                </div>
+                <div class="flex items-center">
+                    <span class="bnb-price mr-4 md:mr-6 text-lg">1 POL = 0.00$</span>
+                    <button id="connectButtonProfile" class="bg-green-500 hover:bg-green-400 text-black px-5 py-2 rounded-full transition duration-300">
+                        Conectado
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap md:flex-nowrap">
+            <div class="w-full md:w-1/4 bg-black p-4 rounded-3xl mb-4 md:mb-0">
+                <div class="mb-6">
+                    <ul>
+                        <li class="flex items-center p-4 bg-gray-800 rounded-lg">
+                            <i class="fas fa-home text-white mr-2"></i>
+                            <a href="profile.html" class="text-white">Página principal</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mb-6">
+                    <ul>
+                        <li class="flex items-center p-4 bg-gray-800 rounded-t-lg">
+                            <i class="fas fa-users text-white mr-2"></i>
+                            <button class="text-white focus:outline-none">Team</button>
+                        </li>
+                        <li class="border-t border-gray-600"></li>
+                        <li class="pl-6 p-2 bg-gray-800">
+                            <i class="fas fa-user-plus text-white mr-2"></i>
+                            <a href="referidos.html" class="text-white">Referidos</a>
+                        </li>
+                        <li class="pl-6 p-2 bg-gray-800 rounded-b-lg">
+                            <i class="fas fa-link text-white mr-2"></i>
+                            <a href="depositos.html" class="text-white">Depositos</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li class="flex items-center p-4 bg-gray-800 rounded-t-lg">
+                            <i class="fas fa-info text-white mr-2"></i>
+                            <button class="text-white focus:outline-none">Información</button>
+                        </li>
+                        <li class="border-t border-gray-600"></li>
+                        <li class="pl-6 p-2 bg-gray-800">
+                            <i class="fas fa-bookmark text-white mr-2"></i>
+                            <a href="intro.html" class="text-white">Introducción</a>
+                        </li>
+                        <li class="pl-6 p-2 bg-gray-800">
+                            <i class="fas fa-link text-white mr-2"></i>
+                            <a href="docs.html" class="text-white">Documentacion</a>
+                        </li>
+                        <li class="pl-6 p-2 bg-gray-800 rounded-b-lg">
+                            <i class="fas fa-calculator text-white mr-2"></i>
+                            <a href="calculadora.html" class="text-white">Calculadora</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-6">
+                    <ul>
+                        <li class="flex items-center p-4 bg-gray-800 rounded-lg">
+                            <i class="fas fa-home text-white mr-2"></i>
+                            <a href="" id="disconnectButton" class="text-white">Salir</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="w-full md:w-3/4 p-4">
+                <h2 class="text-2xl font-bold mb-4">Referidos</h2>
+                <div id="referralsContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js"></script>
+    <script src="script/web3.js"></script>
+    <script src="script/contract.js"></script>
+    <script src="script/wallets.js"></script>
+    <script src="script/simpleAlerts.js"></script>
+    <script src="script/copy.js"></script>
+    <script src="script/referidos.js"></script>
+</body>
+</html>

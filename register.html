@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNB Fund - Registro</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-black text-white">
+    <!-- Contenedor principal -->
+    <div id="main-container" class="container mx-auto p-0 max-w-screen-lg bg-black pt-16 md:pt-24">
+        <!-- Banner -->
+        <div id="banner" class="w-full flex justify-between items-center bg-black p-2 md:p-4 fixed top-0 left-0 z-50">
+            <div class="flex items-center sm:ml-0 md:ml-0 lg:ml-8 xl:ml-12">
+                <a href="index.html"><img src="img/bills.png" alt="BNB Fund Logo" class="h-6 w-6 mr-2 md:h-8 md:w-8"></a>
+                <h1 class="text-lg font-bold md:text-2xl">BNB Fund</h1>
+            </div>
+            <div class="flex items-center sm:mr-0 md:mr-0 lg:mr-8 xl:mr-12">
+                <span class="bnb-price mr-2 text-xs md:mr-4 md:text-base">1 POL =</span>
+                <div id="connectButtonContainer" class="bg-yellow-500 text-black px-2 py-1 rounded-xl text-xs md:px-4 md:py-2 md:text-base" onclick="openModal()">Connect wallet</div>
+            </div>
+        </div>
+
+        <!-- Contenido principal con dos secciones en la misma l&iacute;nea horizontal -->
+        <div id="main-content" class="mt-12 md:mt-0 flex flex-wrap md:flex-nowrap">
+            <!-- Secci&oacute;n izquierda con los &iacute;tems -->
+            <div class="bg-transparent p-6 mb-2 w-full md:w-1/2">
+                <h2 class="text-2xl font-bold mb-4">Registro en BNBFund</h2>
+                <p class="mb-4">Busca cualquier cuenta de miembro dentro de BNBFund. <br> Ingresa el ID o la direcci&oacute;n POL, por defecto es 1.</p>
+                <div class="mb-4">
+                    <input id="searchInput" type="number" class="bg-gray-600 text-white px-4 py-2 mb-1 rounded-xl w-full" value="1">
+                    <div class="flex items-center mb-2">
+                        <i id="item1" class="fas fa-circle text-red-500 mr-2"></i>
+                        <label class="block">Wallet Conectada</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <i id="item2" class="fas fa-circle text-red-500 mr-2"></i>
+                        <label class="block">Balance m&iacute;nimo: 0.000075 POL</label>
+                    </div>
+                    <input id="amountInput" type="text" class="bg-gray-600 text-white px-4 py-2 mb-1 rounded-xl w-full border" placeholder="0.000075 POL" disabled>
+                    <p id="minAmountMessage" class="text-yellow-500 text-xs mt-1 ml-1 hidden">Monto m&iacute;nimo 0.000075 POL</p>
+                    <button id="joinButton" class="bg-blue-400 text-white px-4 py-2 rounded-xl w-full mt-3" onclick="participateInSmartContract()" disabled>Unirse a BNBFund</button>
+                </div>
+            </div>
+
+            <div class="bg-gray-700 p-4 rounded-3xl w-full md:w-1/2">
+                <h2 class="text-2xl font-bold mb-4">¿No conoces ningún ID?</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6B6VIYeIAns" title="Video de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full rounded-xl mb-4"></iframe>
+                <p class="text-center text-sm text-gray-400">Este es un video tutorial para aprender más sobre BNBFund.</p>
+            </div>
+            
+        </div>
+
+        <!-- Secci&oacute;n de &iacute;conos de redes sociales -->
+        <div class="flex justify-center mt-4">
+            <a href="#" class="text-gray-400 mx-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 mx-2"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-gray-400 mx-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 mx-2"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+
+    <!-- Modal de Transacci&oacute;n -->
+    <div id="transactionModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-white text-black p-6 rounded-lg text-center w-11/12 md:w-1/3">
+            <div id="loadingIcon" class="mb-4">
+                <i class="fas fa-spinner fa-spin text-4xl"></i>
+            </div>
+            <div id="transactionMessage" class="text-lg font-semibold mb-4">Transacci&oacute;n en progreso...</div>
+            <a id="testnetLink" href="#" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-lg hidden">Ver detalles de la transacci&oacute;n</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- Web3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <!-- Scripts personalizados -->
+    <script src="script/web3.js"></script>
+    <script src="script/modal.js"></script>
+    <script src="script/register.js"></script>
+    <script src="script/web3-utils.js"></script>
+    <script src="script/wallets.js"></script>
+
+
+</body>
+</html>

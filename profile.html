@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - BNB Fund</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="css/alert.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/9.0.0/bignumber.min.js"></script>
+</head>
+<body class="bg-black text-white">
+    <div class="container mx-auto p-2 max-w-screen-xl bg-black rounded-3xl shadow-xl">
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-4 rounded-2xl mb-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex items-center mb-2 md:mb-0">
+                    <a href="index.html">
+                        <img src="img/bills.png" alt="BNB Fund Logo" class="h-8 w-8 mr-2 md:h-14 md:w-16">
+                    </a>
+                    <h1 class="text-3xl font-extrabold">BNB Fund</h1>
+                </div>
+                <div class="flex items-center">
+                    <span class="bnb-price mr-4 md:mr-6 text-lg">1 POL = 0.00$</span>
+                    <button id="connectButtonProfile" class="bg-green-500 hover:bg-green-400 text-black px-5 py-2 rounded-full transition duration-300">
+                        Conectado
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row">
+            <div class="w-full md:w-1/4 bg-black p-4 rounded-3xl mb-4 md:mb-0">
+                <div class="mb-6">
+                    <ul>
+                        <li class="flex items-center p-4 bg-gray-800 rounded-lg">
+                            <i class="fas fa-home text-white mr-2"></i>
+                            <a href="profile.html" class="text-white">Página principal</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mb-6">
+                    <ul>
+                        <li class="flex items-center p-4 bg-gray-800 rounded-t-lg">
+                            <i class="fas fa-users text-white mr-2"></i>
+                            <button class="text-white focus:outline-none">Team</button>
+                        </li>
+                        <li class="border-t border-gray-600"></li>
+                        <li class="pl-6 p-2 bg-gray-800">
+                            <i class="fas fa-user-plus text-white mr-2"></i>
+                            <a href="referidos.html" class="text-white">Referidos</a>
+                        </li>
+                        <li class="pl-6 p-2 bg-gray-800 rounded-b-lg">
+                            <i class="fas fa-link text-white mr-2"></i>
+                            <a href="depositos.html" class="text-white">Depositos</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li class="flex items-center p-4 bg-gray-800 rounded-t-lg">
+                            <i class="fas fa-info text-white mr-2"></i>
+                            <button class="text-white focus:outline-none">Información</button>
+                        </li>
+                        <li class="border-t border-gray-600"></li>
+                        <li class="pl-6 p-2 bg-gray-800">
+                            <i class="fas fa-bookmark text-white mr-2"></i>
+                            <a href="intro.html" class="text-white">Introducción</a>
+                        </li>
+                        <li class="pl-6 p-2 bg-gray-800">
+                            <i class="fas fa-link text-white mr-2"></i>
+                            <a href="docs.html" class="text-white">Documentacion</a>
+                        </li>
+                        <li class="pl-6 p-2 bg-gray-800 rounded-b-lg">
+                            <i class="fas fa-calculator text-white mr-2"></i>
+                            <a href="calculadora.html" class="text-white">Calculadora</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-6">
+                    <ul>
+                        <li class="flex items-center p-4 bg-gray-800 rounded-lg">
+                            <i class="fas fa-home text-white mr-2"></i>
+                            <a href="index.html" id="disconnectButton" class="text-white">Salir</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w-full md:w-3/4 bg-black p-4 md:p-2 rounded-3xl md:ml-2">
+                <div class="flex flex-col md:flex-row items-center mb-6">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <i class="fas fa-user-circle text-white text-9xl mr-6"></i>
+                        <div class="space-y-0">
+                            <h2 id="userId" class="text-2xl font-bold m-0 p-0">ID 0</h2>
+                            <p id="registrationDate" class="text-sm text-gray-300 m-0 p-0">Invitado el 00/00/00</p>
+                            <span id="walletAddress" class="m-0 p-0 font-bold">0x....</span>
+                            <i class="fas fa-copy cursor-pointer" onclick="copyWalletAddress()"></i>
+                            <input type="text" id="walletAddressAll" class="opacity-0 pointer-events-none m-0 p-0" value="0x1234567890abcdef">
+                        </div>
+                    </div>
+                    <div class="bg-gray-900 p-6 rounded-3xl w-full md:0 md:ml-6">
+                        <p class="text-2xl font-bold mb-4">Enlace Personal</p>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <input type="text" id="referralLink" readonly class="bg-transparent text-yellow-400 px-4 py-3 flex-grow rounded-xl mb-4 md:mb-0 md:mr-4 focus:outline-none" value="bnbfund.io/register.html?ref=3">
+                            <button id="copyButton" class="bg-blue-500 text-white px-4 py-3 rounded-xl hover:bg-blue-400 transition duration-300">Copiar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <button class="bg-green-500 text-white px-6 py-3 rounded-xl hover:bg-green-400 transition duration-300" onclick="openModal()">Agregar Fondos</button>
+                    <button class="bg-red-500 text-white px-6 py-3 rounded-xl hover:bg-red-400 transition duration-300 reactivate-button" style="display: none;">Reactivarme</button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-6">
+                    <div class="bg-gray-900 p-6 rounded-3xl text-center">
+                        <p class="text-sm font-bold mb-2">Patrocinador</p>
+                        <p id="sponsorId" class="text-md text-green-500">ID --</p>
+                    </div>
+                    <div class="bg-gray-900 p-6 rounded-3xl text-center">
+                        <p class="text-sm font-bold mbb-2">Total Referidos</p>
+                        <p id="referralsCount" class="text-md text-blue-500">0</p>
+                    </div>
+                    
+                    <!-- Distribucion 
+                    <div class="bg-gray-900 p-6 rounded-3xl w-full min-w-0">
+                        <p class="text-md font-bold mb-4">Distribución</p>
+                        <div class="space-y-2">
+                            <p id="distributionStatus" class="text-lg text-yellow-500">00/00 Activado</p>
+                        </div>
+                    </div> -->
+                    <div class="bg-gray-900 p-6 rounded-3xl text-center">
+                        <p class="text-sm font-bold mb-2">Distribucion 1</p>
+                        <p id="dist_2" class="text-md text-purple-500">0</p>
+                    </div>
+                    <div class="bg-gray-900 p-6 rounded-3xl text-center">
+                        <p class="text-sm font-bold mb-2">Distribucion 2</p>
+                        <p id="distributionStatus" class="text-md text-purple-500">0</p>
+                    </div>
+                    <div class="bg-gray-900 p-6 rounded-3xl text-center">
+                        <p class="text-sm font-bold mb-2">Beneficio</p>
+                        <p id="benefits" class="text-md text-purple-500">0</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-6">
+                    <div class="md:col-span-3">
+                        <div class="bg-gray-900 p-6 rounded-3xl shadow-lg">
+                            <h2 class="text-md font-bold mb-4">Recent Activity BNBFund</h2>
+                            <div id="recentActivity" class="block sm:block md:block lg:block xl:block 2xl:block"></div>
+                        </div>
+                        
+                        <div class="bg-gray-900 p-6 rounded-3xl shadow-lg mt-4"> <h2 class="text-md font-bold mb-4">Additional Deposits</h2>
+                            <div id="additionalDeposits" class="block sm:block md:block lg:block xl:block 2xl:block"></div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 flex flex-col gap-6 items-start">
+                        <div class="bg-gray-900 p-6 rounded-3xl w-full min-w-0">
+                            <p class="text-xl text-gray-400 mb-4">Total members</p>
+                            <p id="totalMembers" class="text-md text-black-400">0</p>
+                        </div>
+                        <div class="bg-gray-900 p-6 rounded-3xl w-full min-w-0">
+                            <p class="text-xl text-gray-400 mb-4">Total Smart Contract Funds</p>
+                            <p id="totalContractFunds" class="text-md text-black-400">0</p>
+                        </div>
+                        <div class="bg-gray-900 p-6 rounded-3xl w-full min-w-0">
+                            <p class="text-xl text-gray-400 mb-4">Total Distribuction</p>
+                            <p id="totalDistributed" class="text-md text-black-400">0</p>
+                        </div>
+                        <div class="bg-gray-900 p-6 rounded-3xl w-full min-w-0">
+                            <p class="text-xl text-gray-400 mb-4">Total Polygon Distribuidos</p>
+                            <p id="totalDeposited" class="text-md text-black-400">0</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="participationModal" class="fixed inset-0 hidden bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-gray-800 p-8 rounded-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-4">Agragar Fondos</h2>
+            <div class="mb-4">
+                <label for="idInput" class="block text-lg font-medium">ID</label>
+                <input type="text" id="myId" value="" readonly class="text-black w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label class="block text-lg font-medium">Monto (POL)</label>
+                <input type="text" id="amountInput" placeholder="0.000075 POL" class="text-black w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="flex justify-end">
+                <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 rounded-lg mr-4">Cancelar</button>
+                <button onclick="participateInSmartContract()" class="bg-green-500 text-white px-4 py-2 rounded-lg">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Transacci&oacute;n -->
+    <div id="transactionModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-white text-black p-6 rounded-lg text-center w-11/12 md:w-1/3">
+            <div id="loadingIcon" class="mb-4">
+                <i class="fas fa-spinner fa-spin text-4xl"></i>
+            </div>
+            <div id="transactionMessage" class="text-lg font-semibold mb-4">Transacci&oacute;n en progreso...</div>
+            <a id="testnetLink" href="#" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-lg hidden">Ver detalles de la transacci&oacute;n</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <script src="script/web3.js"></script>
+    <script src="script/contract.js"></script>
+    <script src="script/profile.js"></script>
+    <script src="script/transactionModal.js"></script>
+    <script src="script/participar.js"></script>
+    <script src="script/wallets.js"></script>
+    <script src="script/simpleAlerts.js"></script>
+    <script src="script/copy.js"></script>
+    <script src="script/modal.js"></script>
+
+</body>
+</html>
