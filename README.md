@@ -58,7 +58,4 @@ Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archiv
 
 Para cualquier consulta o sugerencia, por favor contacta a [its_shark03@protonmail.com](mailto:its_shark03@protonmail.com).
 
----
-
 ¡Gracias por usar BnBFund!
-```
